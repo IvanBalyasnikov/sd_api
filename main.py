@@ -183,7 +183,7 @@ async def image_mixer(request: Request):
     else:
         h = 512
 
-    image = SDApi.inpaint(init_image, style_image, h, w)
+    image = SDApi.image_mixer(init_image, style_image, h, w)
     return Response(json.dumps({"image": image}), 200)
 
 
