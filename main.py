@@ -37,7 +37,7 @@ def remove_file_delay(file_peth:str, delay):
 async def txt2img(request: Request):
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -70,7 +70,7 @@ async def txt2img(request: Request):
 async def depth2img(request: Request):
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -108,7 +108,7 @@ async def depth2img(request: Request):
 async def inpaint(request: Request):
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -152,7 +152,7 @@ async def image_mixer(request: Request):
 
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -191,7 +191,7 @@ async def image_mixer(request: Request):
 async def rembg(request: Request):
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -217,7 +217,7 @@ async def rembg(request: Request):
 async def magic_mix(request: Request):
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -255,7 +255,7 @@ async def magic_mix(request: Request):
 async def outpainting(request: Request):
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -291,7 +291,7 @@ async def outpainting(request: Request):
 async def face_gen(request: Request):
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -329,7 +329,7 @@ async def face_gen(request: Request):
 async def set_task(request: Request):
     headers = request.headers
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
@@ -380,7 +380,7 @@ async def upload_file(request: Request):
 
     headers = dict(request.headers)
 
-    api_token_ = str(headers.get("api_token"))
+    api_token_ = str(headers.get("api-token"))
 
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
@@ -414,7 +414,7 @@ async def get_file(request: Request, background_tasks: BackgroundTasks):
     headers = dict(request.headers)
 
 
-    api_token_ = headers.get("api_token")
+    api_token_ = headers.get("api-token")
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
     
