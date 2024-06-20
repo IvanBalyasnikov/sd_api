@@ -38,7 +38,6 @@ async def txt2img(request: Request):
     headers = request.headers
 
     api_token_ = headers.get("api_token")
-    print(headers)
     if api_token_ not in api_tokens:
         return Response(json.dumps({"message": "Invalid api token"}), 403)
 
