@@ -39,9 +39,10 @@ class SDApi():
             "width": w,
             "height": h,
             "alwayson_scripts": {
-                "controlnet": {
+                "ControlNet": {
                     "args": [
                         {
+                        "enabled": True,
                         "input_image": img,
                         "module": "depth_midas",
                         "model": "control_sd15_depth [fef5e48e]"
@@ -71,9 +72,10 @@ class SDApi():
                 img2
             ],
             "alwayson_scripts": {
-                "controlnet": {
+                "ControlNet": {
                     "args": [
                         {
+                        "enabled": True,
                         "input_image": img1,
                         "module": "canny",
                         "model": "control_sd15_canny [fef5e48e]"
@@ -123,9 +125,10 @@ class SDApi():
                 img1
             ],
             "alwayson_scripts": {
-                "controlnet": {
+                "ControlNet": {
                     "args": [
                         {
+                        "enabled": True,
                         "input_image": img1,
                         "module": "canny",
                         "model": "control_sd15_canny [fef5e48e]"
@@ -157,16 +160,17 @@ class SDApi():
             "steps": 20,
             "width": w + 128 if direction == "horizontal" else w,
             "height": h + 128 if direction == "vertical" else h,
-            # "resize_mode":1,
-            # "init_images": [
-            #     img1
-            # ],
+            "resize_mode":1,
+            "init_images": [
+                img1
+            ],
             # "script_name": "poor man's outpainting",
             # "script_args":[128, 4, "fill", ['left', 'right', 'up', 'down']]
             "alwayson_scripts": {
-                "controlnet": {
+                "ControlNet": {
                     "args": [
                         {
+                        "enabled": True,
                         "input_image": img1,
                         "module": "inpaint_only+lama",
                         "model": "control_v11p_sd15_inpaint [ebff9138]",
@@ -178,7 +182,7 @@ class SDApi():
             },
         }
 
-        response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload)
         r = response.json()
 
         return r['images'][0]
@@ -198,9 +202,10 @@ class SDApi():
                 img1
             ],
             "alwayson_scripts": {
-                "controlnet": {
+                "ControlNet": {
                     "args": [
                         {
+                        "enabled": True,
                         "input_image": img1,
                         "module": "ip-adapter_face_id_plus",
                         "model": "ip-adapter-faceid-plus_sd15 [d86a490f]"
