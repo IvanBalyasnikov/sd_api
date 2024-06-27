@@ -355,6 +355,7 @@ async def set_task(request: Request):
         "-o" : os.path.abspath(output_files_path + api_token_ + "/" + target_file),
         "-s" : "2" if "scale" not in body.keys() else body["scale"] if int(body["scale"]) <= 4 else "2",
         "-n" : "realesrgan-x4plus" if "model" not in body.keys() else body["model"] if body["model"] in models_list else "realesrgan-x4plus",
+        "-m" : os.path.abspath("models/")
     }
 
     cmd = ""
