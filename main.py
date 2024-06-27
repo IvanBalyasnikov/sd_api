@@ -362,11 +362,11 @@ async def set_task(request: Request):
     target_file = body["file_id"] + found_file
 
     subprocess_data = {
-        "-i" : os.path.abspath(files_dir_path + api_token_ + "/" + target_file),
-        "-o" : os.path.abspath(output_files_path + api_token_ + "/" + target_file),
+        "-i" : f'"{os.path.abspath(files_dir_path + api_token_ + "/" + target_file)}"',
+        "-o" : f'"{os.path.abspath(output_files_path + api_token_ + "/" + target_file)}"',
         "-s" : "2" if "scale" not in body.keys() else body["scale"] if int(body["scale"]) <= 4 else "2",
         "-n" : "realesrgan-x4plus" if "model" not in body.keys() else body["model"] if body["model"] in models_list else "realesrgan-x4plus",
-        "-m" : os.path.abspath("./models/")
+        "-m" : f'"{os.path.abspath("./models/")}"'
     }
 
     cmd = ""
@@ -375,7 +375,7 @@ async def set_task(request: Request):
     if os_name == "nt":
         cmd += "./utils/upscayl-bin.exe "
     else:
-        cmd += os.path.abspath("utils/upscayl-bin") + " "
+        cmd += f'"{os.path.abspath("utils/upscayl-bin")}" '
 
     for key, value in subprocess_data.items():
         cmd += f"{key} {value} "
