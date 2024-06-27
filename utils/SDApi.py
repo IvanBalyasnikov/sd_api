@@ -138,6 +138,8 @@ class SDApi():
         response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload)
         r = response.json()
 
+        print(r)
+
         return r['images'][0]
 
 
