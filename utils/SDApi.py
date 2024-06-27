@@ -167,11 +167,11 @@ class SDApi():
                 "controlnet": {
                     "args": [
                         {
-                        "input_image": img1,
+                        "image": img1,
                         "module": "inpaint_only+lama",
                         "model": "control_v11p_sd15_inpaint [ebff9138]",
-                        "control_mode":2,
-                        "resize_mode":2
+                        "control_mode":'My prompt is more important',
+                        "resize_mode":'Resize and Fill'
                         }
                     ]
                 }
