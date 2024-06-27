@@ -3,14 +3,13 @@ from configparser import ConfigParser
 
 import utils.image_processing as ip
 import utils.SDApi as sda 
-import utils.upscale as u
 
+import subprocess
 import uuid
 import json
 import time
 import cv2
 import os
-
 
 
 app = FastAPI()
@@ -31,6 +30,18 @@ def remove_file_delay(file_peth:str, delay):
     time.sleep(delay)
     if os.path.isfile(file_peth):
         os.remove(file_peth)
+
+
+def find_file(file_name, directory):
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.startswith(file_name):
+                return os.path.splitext(file)[1]
+    return None
+
+
+def run_cmd(cmd: str):
+    subprocess.Popen(cmd)
 
 
 @app.post("/txt2img")
@@ -343,7 +354,7 @@ async def set_task(request: Request):
     if "file_id" not in body.keys():
         return Response(json.dumps({"message": "No file id"}), 400)
     
-    found_file = u.find_file(body["file_id"], files_dir_path + api_token_ + "/")
+    found_file = find_file(body["file_id"], files_dir_path + api_token_ + "/")
  
     if found_file is None:
         return Response(json.dumps({"message": "No file found"}), 400)
@@ -371,7 +382,7 @@ async def set_task(request: Request):
 
     print(cmd)
 
-    u.run_cmd(cmd)
+    run_cmd(cmd)
 
     return Response(json.dumps({"message": "Success"}), 200)
 
@@ -428,7 +439,7 @@ async def get_file(request: Request, background_tasks: BackgroundTasks):
     if "file_id" not in body.keys():
         return Response(json.dumps({"message": "No file id"}), 400)
     
-    found_file = u.find_file(body["file_id"], files_dir_path)
+    found_file = find_file(body["file_id"], files_dir_path)
 
     if found_file is None:
         return Response(json.dumps({"message": "No file found"}), 400)
