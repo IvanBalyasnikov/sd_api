@@ -158,9 +158,9 @@ class SDApi():
             "width": w + 128 if direction == "horizontal" else w,
             "height": h + 128 if direction == "vertical" else h,
             "resize_mode":1,
-            "init_images": [
-                img1
-            ],
+            # "init_images": [
+            #     img1
+            # ],
             # "script_name": "poor man's outpainting",
             # "script_args":[128, 4, "fill", ['left', 'right', 'up', 'down']]
             "alwayson_scripts": {
@@ -178,7 +178,7 @@ class SDApi():
             },
         }
 
-        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload)
         r = response.json()
 
         return r['images'][0]
