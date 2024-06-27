@@ -167,7 +167,7 @@ class SDApi():
                 "controlnet": {
                     "args": [
                         {
-                        "image": img1,
+                        "input_image": img1,
                         "module": "inpaint_only+lama",
                         "model": "control_v11p_sd15_inpaint [ebff9138]",
                         "control_mode":'ControlNet is more important',
