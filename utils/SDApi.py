@@ -157,7 +157,7 @@ class SDApi():
             "steps": 20,
             "width": w + 128 if direction == "horizontal" else w,
             "height": h + 128 if direction == "vertical" else h,
-            "resize_mode":1,
+            # "resize_mode":1,
             # "init_images": [
             #     img1
             # ],
