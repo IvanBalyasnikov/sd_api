@@ -170,7 +170,7 @@ class SDApi():
                         "image": img1,
                         "module": "inpaint_only+lama",
                         "model": "control_v11p_sd15_inpaint [ebff9138]",
-                        "control_mode":'My prompt is more important',
+                        "control_mode":'ControlNet is more important',
                         "resize_mode":'Resize and Fill'
                         }
                     ]
