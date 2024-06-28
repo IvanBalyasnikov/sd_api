@@ -17,4 +17,4 @@ jobs:
         script: |
           cd /home/aiborn/sd_api
           git pull
-          sudo systemctl restart sd_api.service
+          sudo -S systemctl restart sd_api.service
