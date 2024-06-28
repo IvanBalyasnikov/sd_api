@@ -14,7 +14,4 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         key: ${{ secrets.key }}
         port: ${{ secrets.PORT }}
-        script:
-         - cd /home/aiborn/sd_api
-         - git pull
-         - sudo systemctl restart sd_api.service 
+        script: uname -a
