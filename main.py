@@ -379,8 +379,6 @@ async def set_task(request: Request):
     for key, value in subprocess_data.items():
         cmd += f"{key} {value} "
 
-    print(cmd)
-
     run_cmd(cmd)
 
     return Response(json.dumps({"message": "Success"}), 200)
