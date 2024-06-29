@@ -374,7 +374,7 @@ async def set_task(request: Request):
     if os_name == "nt":
         cmd += "./utils/upscayl-bin.exe "
     else:
-        cmd += os.path.abspath("utils/upscayl-bin")
+        cmd += os.path.abspath("utils/upscayl-bin") + " "
 
     for key, value in subprocess_data.items():
         cmd += f"{key} {value} "
