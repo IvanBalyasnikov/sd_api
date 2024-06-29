@@ -41,7 +41,7 @@ def find_file(file_name, directory):
 
 
 def run_cmd(cmd: str):
-    subprocess.Popen(cmd)
+    subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
 
 @app.post("/txt2img")
@@ -362,11 +362,10 @@ async def set_task(request: Request):
     target_file = body["file_id"] + found_file
 
     subprocess_data = {
-        "-i" : f'"{os.path.abspath(files_dir_path + api_token_ + "/" + target_file)}"',
-        "-o" : f'"{os.path.abspath(output_files_path + api_token_ + "/" + target_file)}"',
+        "-i" : files_dir_path + api_token_ + "/" + target_file,
+        "-o" : output_files_path + api_token_ + "/" + target_file,
         "-s" : "2" if "scale" not in body.keys() else body["scale"] if int(body["scale"]) <= 4 else "2",
         "-n" : "realesrgan-x4plus" if "model" not in body.keys() else body["model"] if body["model"] in models_list else "realesrgan-x4plus",
-        "-m" : f'"{os.path.abspath("./models/")}"'
     }
 
     cmd = ""
