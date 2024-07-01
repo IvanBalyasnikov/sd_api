@@ -53,7 +53,7 @@ class SDApi():
         }
 
 
-        response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload, timeout=None)
         r = response.json()
 
         return r['images'][0]
@@ -85,7 +85,7 @@ class SDApi():
             },
         }
 
-        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload, timeout=None)
         r = response.json()
 
         return r['images'][0]
@@ -105,7 +105,7 @@ class SDApi():
             "alpha_matting_erode_size": 10
         }
             
-        response = requests.post(url=f'{url}/rembg', json=payload)
+        response = requests.post(url=f'{url}/rembg', json=payload, timeout=None)
         r = response.json()
 
         return r['image']
@@ -138,7 +138,7 @@ class SDApi():
             },
         }
 
-        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload, timeout=None)
         r = response.json()
 
         return r['images'][0]
@@ -180,7 +180,7 @@ class SDApi():
             },
         }
 
-        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload, timeout=None)
         r = response.json()
 
         return r['images'][0]
@@ -213,7 +213,7 @@ class SDApi():
             },
         }
 
-        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload, timeout=None)
         r = response.json()
         
         return r['images'][0]
@@ -230,7 +230,7 @@ class SDApi():
             "height": h,
         }
 
-        response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload, timeout=None)
         r = response.json()
         
         return r['images'][0]
@@ -252,7 +252,7 @@ class SDApi():
             "mask": mask
         }
 
-        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload)
+        response = requests.post(url=f'{url}/sdapi/v1/img2img', json=payload, timeout=None)
         r = response.json()
 
         return r['images'][0]
