@@ -41,12 +41,10 @@ def find_file(file_name, directory):
 
 
 def run_cmd(cmd: str):
-    # subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-    subprocess.Popen(cmd)
+    subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
 
 
 def run_task(func, *args):
-    print(func)
     image = func(*args[:-2])
     cv2.imwrite(args[-2], ip.b64_cv_im(image))
     args[-1].add_task(remove_file_delay, args[-2], delay = del_delay)
